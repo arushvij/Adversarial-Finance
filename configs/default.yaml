@@ -1,0 +1,35 @@
+seed: 42
+artifacts_dir: artifacts
+
+data:
+  raw_path: data/raw/accepted_2007_to_2018Q4.csv.gz
+  processed_dir: data/processed
+  nrows: null                  # set e.g. 200000 for a quick dev run
+  # Temporal protocol: train/val/test_id are random splits of the SAME window;
+  # OOD is a strictly later window the models never see.
+  train_start: "2012-01-01"
+  train_end: "2014-12-31"
+  ood_start: "2015-01-01"
+  ood_end: "2016-12-31"
+  val_frac: 0.15
+  test_frac: 0.15
+  winsor_quantiles: [0.005, 0.995]
+
+xgboost:
+  n_estimators: 1000
+  learning_rate: 0.05
+  max_depth: 5
+  subsample: 0.8
+  colsample_bytree: 0.8
+  min_child_weight: 5
+  reg_lambda: 1.0
+  early_stopping_rounds: 50
+
+nn:
+  hidden_dims: [128, 64]
+  dropout: 0.2
+  lr: 0.001
+  weight_decay: 0.00001
+  batch_size: 1024
+  max_epochs: 60
+  patience: 8

@@ -1,0 +1,39 @@
+
+=== RESUME BULLETS (copy-paste ready) ===
+
+Option A (concise — fits one line):
+• Built adversarial robustness pipeline for credit-default prediction (LendingClub,
+  1.3M loans); PGD attack degraded MLP accuracy by 12.8%; adversarial
+  training recovered boundary while certifying 99% of test set with mean
+  L2 radius 0.76 via randomized smoothing.
+
+Option B (expanded — for project section):
+• Trained XGBoost + MLP credit-default models (AUC 0.7033) on LendingClub
+  dataset (1.3M loans, 2012–2016); implemented temporal train/OOD split to
+  measure concept drift across 8 quarterly cohorts (OOD AUC 0.7072).
+
+• Adapted FGSM and PGD attacks to tabular financial data with economically
+  constrained perturbations (actionable features only, direction-aware);
+  FGSM flipped 42% of true defaulters to approved in a single
+  gradient step; PGD reduced MLP accuracy by 12.8% vs 2.3%
+  for XGBoost (tree models naturally resist gradient attacks).
+
+• Applied adversarial training (PGD inner loop, 7 steps, 80/20 adv/clean mix);
+  recovered 1.5pp
+  of accuracy drop with <0.1pp clean accuracy cost; certified 86%
+  of test set (σ=0.5) with mean L2 radius 0.307 vs 0.211
+  for base model (+46% radius improvement).
+
+• Implemented minimum-cost algorithmic recourse (coordinate descent, weighted
+  L1 cost in economic units); 80% of rejected true defaulters
+  achieved approval by changing avg 1.3
+  features; top levers: DTI reduction, revolving utilisation, loan amount.
+
+GitHub: github.com/YOUR_USERNAME/adversarial-finance
+Stack:  Python · XGBoost · PyTorch · scikit-learn · statsmodels · pandas
+
+=== LINKEDIN / SHORT VERSION ===
+Built end-to-end adversarial ML system for credit risk: trained models on 1.3M
+LendingClub loans, attacked with FGSM/PGD (41.6% flip rate), defended with
+adversarial training + randomized smoothing (99% certified at σ=1.0,
+mean radius 0.76), computed minimum-cost recourse for rejected borrowers.
